@@ -1,2 +1,3 @@
-# Text-Mining-Cluster-Analysis---Reuters-Data
+# Text Mining/Cluster-Analysis-Reuters-Data  
+
 Reuters banking data
