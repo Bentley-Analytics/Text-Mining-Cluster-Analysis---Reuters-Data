@@ -117,6 +117,7 @@ clValid.result = clValid(dtm[1:500,],
 clMethods=methods.vec,
 validation="internal")
 summary(clValid.result)
+
 ==
 
   
