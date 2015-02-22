@@ -1,3 +1,122 @@
 setwd("M:/r/reut2")
 
 reutersCorpusF = makeCorpus('reut2-001.xml')
+
+
+==
+the frist measurement-weightTf
+dt = DocumentTermMatrix(reutersCorpusF,
+control=list(weighting=weightTf))
+dtm = as.matrix(dt)
+dtm.dist = dist(dtm)
+==
+data set exploration
+str(dt)
+findFreqTerms(dt, lowfreq=200)
+==
+create cluster
+cluster.group.sizes = 2:5
+kmeans.clusters = get.cluster.list(cluster.group.sizes,
+function(k) { kmeans(dtm,k)$cluster })
+names(kmeans.clusters) = cluster.group.sizes
+kmeans.cluster.stats = get.cluster.measures(kmeans.clusters,
+function(cluster)
+cluster.stats(d=dtm.dist,
+cl=cluster))
+==
+output
+get.one.measure(kmeans.cluster.stats, 'dunn')
+get.one.measure(kmeans.cluster.stats, 'dunn2')
+get.one.measure(kmeans.cluster.stats, 'avg.silwidth')
+get.one.measure(kmeans.cluster.stats, 'wb.ratio')
+data.frame(
+dunn=get.one.measure(kmeans.cluster.stats, 'dunn'),
+dunn2=get.one.measure(kmeans.cluster.stats, 'dunn2'),
+avg.silwidth=get.one.measure(kmeans.cluster.stats, 'avg.silwidth'),
+wb.ratio=get.one.measure(kmeans.cluster.stats, 'wb.ratio')
+==
+checkClusterTopic('2')
+get.one.measure(kmeans.cluster.stats, 'cluster.size')['2']
+rownames(dtm) = 1:nrow(dtm)
+methods.vec = c("hierarchical","kmeans","pam")
+clValid.result = clValid(dtm[1:500,],
+2:5,
+clMethods=methods.vec,
+validation="internal")
+summary(clValid.result)
+==
+The Second Measurement-weightBin
+dt = DocumentTermMatrix(reutersCorpusF,control=list(weighting=weightBin))
+dtm = as.matrix(dt)
+dtm.dist = dist(dtm)
+==
+create cluster
+cluster.group.sizes = 2:5
+kmeans.clusters = get.cluster.list(cluster.group.sizes,
+function(k) { kmeans(dtm,k)$cluster })
+names(kmeans.clusters) = cluster.group.sizes
+kmeans.cluster.stats = get.cluster.measures(kmeans.clusters,
+function(cluster)
+cluster.stats(d=dtm.dist,
+cl=cluster))
+==
+output
+get.one.measure(kmeans.cluster.stats, 'dunn')
+get.one.measure(kmeans.cluster.stats, 'dunn2')
+get.one.measure(kmeans.cluster.stats, 'avg.silwidth')
+get.one.measure(kmeans.cluster.stats, 'wb.ratio')
+data.frame(
+dunn=get.one.measure(kmeans.cluster.stats, 'dunn'),
+dunn2=get.one.measure(kmeans.cluster.stats, 'dunn2'),
+avg.silwidth=get.one.measure(kmeans.cluster.stats, 'avg.silwidth'),
+wb.ratio=get.one.measure(kmeans.cluster.stats, 'wb.ratio')
+==
+checkClusterTopic('2')
+get.one.measure(kmeans.cluster.stats, 'cluster.size')['2']
+rownames(dtm) = 1:nrow(dtm)
+methods.vec = c("hierarchical","kmeans","pam")
+clValid.result = clValid(dtm[1:500,],
+2:5,
+clMethods=methods.vec,
+validation="internal")
+summary(clValid.result)
+==
+The Third Measurement-weightTfIdf
+dt = DocumentTermMatrix(reutersCorpusF,
+control=list(weighting=weightTfIdf))
+dtm = as.matrix(dt)
+dtm.dist = dist(dtm)
+==
+create cluster
+cluster.group.sizes = 2:5
+kmeans.clusters = get.cluster.list(cluster.group.sizes,
+function(k) { kmeans(dtm,k)$cluster })
+names(kmeans.clusters) = cluster.group.sizes
+kmeans.cluster.stats = get.cluster.measures(kmeans.clusters,
+function(cluster)
+cluster.stats(d=dtm.dist,
+cl=cluster))
+==
+output
+get.one.measure(kmeans.cluster.stats, 'dunn')
+get.one.measure(kmeans.cluster.stats, 'dunn2')
+get.one.measure(kmeans.cluster.stats, 'avg.silwidth')
+get.one.measure(kmeans.cluster.stats, 'wb.ratio')
+data.frame(
+dunn=get.one.measure(kmeans.cluster.stats, 'dunn'),
+dunn2=get.one.measure(kmeans.cluster.stats, 'dunn2'),
+avg.silwidth=get.one.measure(kmeans.cluster.stats, 'avg.silwidth'),
+wb.ratio=get.one.measure(kmeans.cluster.stats, 'wb.ratio')
+==
+checkClusterTopic('2')
+get.one.measure(kmeans.cluster.stats, 'cluster.size')['2']
+rownames(dtm) = 1:nrow(dtm)
+methods.vec = c("hierarchical","kmeans","pam")
+clValid.result = clValid(dtm[1:500,],
+2:5,
+clMethods=methods.vec,
+validation="internal")
+summary(clValid.result)
+==
+
+  
