@@ -1,0 +1,3 @@
+setwd("M:/r/reut2")
+
+reutersCorpusF = makeCorpus('reut2-001.xml')
