@@ -1,6 +1,6 @@
-# Text Mining/Cluster-Analysis-Reuters-Data  
+# Text Mining/Cluster-Analysis/Reuters- 
 
-Reuters banking data
+Reuters business and finance articles
 
 Analyze two articles chosen from the Reuters
 
